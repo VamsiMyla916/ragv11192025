@@ -1,0 +1,16 @@
+# Streamlit for the UI
+streamlit
+
+# Core RAG Libraries
+pypdf
+langchain
+langchain-core
+langchain-text-splitters
+langchain-community
+
+# Vector Store and Embeddings (CPU-friendly)
+faiss-cpu
+sentence-transformers
+
+# The dedicated library for the ultra-fast Groq LLM API
+langchain-groq
