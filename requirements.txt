@@ -1,16 +1,11 @@
-# Streamlit for the UI
-streamlit
-
-# Core RAG Libraries
-pypdf
-langchain
-langchain-core
+# (Previous libraries remain...)
+langchain-groq
+faiss-cpu
+sentence-transformers
 langchain-text-splitters
 langchain-community
 
-# Vector Store and Embeddings (CPU-friendly)
-faiss-cpu
-sentence-transformers
-
-# The dedicated library for the ultra-fast Groq LLM API
-langchain-groq
+# New dependency for Reranking and general directory loading
+unstructured[local-inference]
+pypdf # For safety, in case you have PDFs
+rank_bm25 # For advanced retrieval/reranking
