@@ -8,7 +8,8 @@ from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_core.prompts import PromptTemplate, ChatPromptTemplate
 
 # RAG/Data Loading Components
-from langchain_community.document_loaders import DirectoryLoader, TextLoader, PyPDFLoader
+# We will use the generic DirectoryLoader and rely on 'unstructured' for parsing
+from langchain_community.document_loaders import DirectoryLoader
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import RecursiveCharacterSplitter
@@ -60,16 +61,14 @@ def setup_vector_store():
         
         status.update(label="1. Scanning project directory and mapping loaders...", state="running")
         
-        # Loader map for multi-type ingestion, specifically targeting your project files
+        # FIX: The 'loader_map' argument is removed. We use a single loader and a glob pattern
+        # to focus on relevant files, relying on the default document parser.
         loader = DirectoryLoader(
             ".", # Loads from the root of the Streamlit app
-            glob="**/*", 
-            loader_map={
-                ".md": (TextLoader, {"autodetect_encoding": True}),
-                ".py": (TextLoader, {"autodetect_encoding": True}),
-                ".pdf": (PyPDFLoader, {}), 
-            },
+            glob="**/*.{txt,md,py,pdf}", # Only target specific extensions
             recursive=True,
+            # Set silent_errors=True to skip files that fail parsing instead of crashing
+            silent_errors=True,
             # Exclude non-relevant files/folders for cleaner context
             exclude=["**/venv/*", "**/.git/*", "**/__pycache__/*", "**/streamlit/*", "requirements.txt", "README.md", "*.lock"]
         )
