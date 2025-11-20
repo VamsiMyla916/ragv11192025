@@ -1,11 +1,23 @@
-# (Previous libraries remain...)
+Core Streamlit application
+
+streamlit
+
+LLM interaction (Groq client)
+
 langchain-groq
+
+RAG/Data Pipeline components (FAISS, text splitters, generic components)
+
 faiss-cpu
-sentence-transformers
 langchain-text-splitters
 langchain-community
 
-# New dependency for Reranking and general directory loading
+Document Loaders for multiple file types
+
+pypdf
 unstructured[local-inference]
-pypdf # For safety, in case you have PDFs
-rank_bm25 # For advanced retrieval/reranking
+
+Reranking and Advanced Retrieval dependencies
+
+sentence-transformers
+rank_bm25
