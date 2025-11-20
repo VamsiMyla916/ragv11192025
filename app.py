@@ -75,7 +75,7 @@ def setup_vector_store():
         documents = loader.load()
         
         status.update(label=f"2. Splitting {len(documents)} source documents into chunks...", state="running")
-        text_splitter = RecursiveCharacterSplitter(chunk_size=1000, chunk_overlap=150)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=150)
         chunks = text_splitter.split_documents(documents)
         
         status.update(label="3. Building FAISS index with embeddings...", state="running")
