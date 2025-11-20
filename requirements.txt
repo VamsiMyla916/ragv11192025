@@ -15,7 +15,12 @@ langchain-community
 Document Loaders for multiple file types
 
 pypdf
-unstructured[local-inference]
+
+FIX: Using the minimal extras for text/markdown/code/pdf instead of [local-inference]
+
+to avoid complex dependencies that cause installation errors on Streamlit Cloud.
+
+unstructured[pdf,markdown,text]
 
 Reranking and Advanced Retrieval dependencies
 
