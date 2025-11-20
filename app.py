@@ -12,7 +12,7 @@ from langchain_core.prompts import PromptTemplate, ChatPromptTemplate
 from langchain_community.document_loaders import DirectoryLoader
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
-from langchain_text_splitters import RecursiveCharacterSplitter
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 # Reranking Libraries
 # NOTE: The dependency 'sentence-transformers' must be installed for this.
